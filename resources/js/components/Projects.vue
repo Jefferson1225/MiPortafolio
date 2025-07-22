@@ -62,7 +62,7 @@ const isLoading = ref(true)
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://localhost:8000/api/projects')
+    const response = await axios.get('https://miportafolio-production.up.railway.app/api/projects')
     proyectos.value = response.data
   } catch (error) {
     console.error('Error al cargar proyectos:', error)

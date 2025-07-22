@@ -54,7 +54,7 @@ import axios from 'axios'
 const contactInfo = ref([])
 
 onMounted(async () => {
-    const response = await axios.get('http://localhost:8000/api/contact-info')
+    const response = await axios.get('https://miportafolio-production.up.railway.app/api/contact-info')
     contactInfo.value = response.data
 })
 

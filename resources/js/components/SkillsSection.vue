@@ -35,7 +35,7 @@ const loading = ref(true)
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://localhost:8000/api/skills')
+    const response = await axios.get('https://miportafolio-production.up.railway.app/api/skills')
     skills.value = response.data.sort((a, b) => a.order - b.order)
   } catch (error) {
     console.error('Error al cargar habilidades:', error)
