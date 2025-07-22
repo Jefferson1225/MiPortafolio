@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: mi-portafolio
+    env: docker
+    repo: https://github.com/Jefferson1225/MiPortafolio
+    branch: main
+    dockerfilePath: ./Dockerfile
+    plan: free
