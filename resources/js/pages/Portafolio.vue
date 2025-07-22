@@ -8,19 +8,17 @@ import ContactSection from '@/components/ContactSection.vue'
     <div class="min-h-screen bg-obsidian">
         <!-- Header/Navigation -->
         <header class="bg-obsidian/80 backdrop-blur-sm fixed w-full top-0 z-50">
-            <nav class="container mx-auto px-6 py-7">
-                <div class="flex justify-end space-x-12">
-                    <a href="#about" class="font-serif text-xl text-slate hover:text-bronze transition-colors">Sobre
-                        mí</a>
-                    <a href="#skills"
-                        class="font-serif text-xl text-slate hover:text-bronze transition-colors">Habilidades</a>
-                    <a href="#projects"
-                        class="font-serif text-xl text-slate hover:text-bronze transition-colors">Proyectos</a>
-                    <a href="#contact"
-                        class="font-serif text-xl text-slate hover:text-bronze transition-colors">Contacto</a>
-                </div>
+            <nav class="w-full px-6 py-7 flex justify-end space-x-12">
+                <a href="#about" class="font-serif text-xl text-slate hover:text-bronze transition-colors">Sobre mí</a>
+                <a href="#skills"
+                    class="font-serif text-xl text-slate hover:text-bronze transition-colors">Habilidades</a>
+                <a href="#projects"
+                    class="font-serif text-xl text-slate hover:text-bronze transition-colors">Proyectos</a>
+                <a href="#contact"
+                    class="font-serif text-xl text-slate hover:text-bronze transition-colors">Contacto</a>
             </nav>
         </header>
+
 
         <!-- Hero Section -->
         <main class="pt-20">
