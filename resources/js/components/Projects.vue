@@ -20,7 +20,7 @@
           :initial="{ opacity: 0, y: 40 }"
           :animate="{ opacity: 1, y: 0 }"
           :transition="{ delay: index * 0.2, duration: 0.6 }">
-          <Link :href="`/projects/${proyecto.id}`"
+          <Link :href="`/api/projects/${proyecto.id}`"
             class="block bg-obsidian-light rounded-2xl p-6 shadow-lg hover:scale-[1.01] transition">
             <div class="bg-obsidian-smoth rounded-xl p-4">
               <img v-if="proyecto.image_url" :src="proyecto.image_url" alt="Imagen del proyecto"
