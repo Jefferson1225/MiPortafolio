@@ -1,6 +1,6 @@
 <!-- resources/js/components/ContactSection.vue -->
 <template>
-    <section class="bg-crimson-medium text-white py-16 px-4" id="contacto">
+    <section class="bg-crimson-medium text-white py-16 px-4" id="contact">
         <div class="max-w-4xl mx-auto text-center">
             <!-- Título -->
             <h2 class="text-4xl font-bold text-bronze mb-4">Contacto</h2>
