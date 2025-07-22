@@ -16,7 +16,8 @@ COPY . /var/www/html
 WORKDIR /var/www/html
 
 # Instalar dependencias PHP
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader && \
+    php artisan key:generate
 
 # Instalar dependencias JS y compilar
 RUN npm install && npm run build
