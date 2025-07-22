@@ -3,12 +3,12 @@ FROM php:8.2-apache
 
 # Instalar extensiones y dependencias del sistema
 RUN apt-get update && apt-get install -y \
-    zip unzip git curl \
-    libpng-dev libonig-dev libxml2-dev \
+    zip unzip git curl libpng-dev libonig-dev libxml2-dev \
     libsqlite3-dev sqlite3 \
-    libpq-dev \  # ← Añadido: necesario para pdo_pgsql
+    libpq-dev \ 
     nodejs npm \
     && docker-php-ext-install pdo pdo_mysql pdo_sqlite pdo_pgsql mbstring exif pcntl bcmath gd
+
 
 # Instalar Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
