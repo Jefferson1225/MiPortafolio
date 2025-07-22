@@ -15,9 +15,10 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY . /var/www/html
 WORKDIR /var/www/html
 
-# Instalar dependencias PHP
-RUN composer install --no-dev --optimize-autoloader && \
-    php artisan key:generate
+# Crear archivo .env y generar key
+RUN cp .env.example .env \
+    && composer install --no-dev --optimize-autoloader \
+    && php artisan key:generate
 
 # Instalar dependencias JS y compilar
 RUN npm install && npm run build
@@ -31,9 +32,8 @@ RUN a2enmod rewrite
 # Configuración de Apache
 COPY .docker/vhost.conf /etc/apache2/sites-available/000-default.conf
 
-# Cache de configuración y migraciones
-RUN cp .env.example .env \
-    && php artisan config:cache \
+# Cache de configuración y migraciones (ignora error si ya migrado)
+RUN php artisan config:cache \
     && php artisan migrate --force || true
 
 EXPOSE 80
