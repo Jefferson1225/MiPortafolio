@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-    base: 'https://mi-portafolio-z220.onrender.com/',
+    base: '/build/',
     plugins: [
         laravel({
             input: ['resources/js/app.ts'],
