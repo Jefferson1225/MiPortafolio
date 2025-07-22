@@ -41,6 +41,12 @@ COPY .docker/vhost.conf /etc/apache2/sites-available/000-default.conf
 RUN php artisan config:cache \
     && php artisan migrate --force || true
 
+    # Permisos necesarios
+RUN mkdir -p /var/www/html/storage/logs \
+    && touch /var/www/html/storage/logs/laravel.log \
+    && chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
+    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+
 # Exponer el puerto
 EXPOSE 80
 
