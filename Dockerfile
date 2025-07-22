@@ -11,13 +11,18 @@ RUN apt-get update && apt-get install -y \
 # Instalar Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copiar el proyecto
+# Configurar Apache (evitar error de ServerName)
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
+# Copiar archivos del proyecto
 COPY . /var/www/html
 WORKDIR /var/www/html
 
-# Crear archivo .env y generar key
-RUN cp .env.example .env \
-    && composer install --no-dev --optimize-autoloader \
+# Copiar .env si no existe
+RUN if [ ! -f .env ]; then cp .env.example .env; fi
+
+# Instalar dependencias PHP y generar key
+RUN composer install --no-dev --optimize-autoloader \
     && php artisan key:generate
 
 # Instalar dependencias JS y compilar
@@ -29,11 +34,15 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 # Habilitar mod_rewrite de Apache
 RUN a2enmod rewrite
 
-# Configuración de Apache
+# Configuración de Apache personalizada
 COPY .docker/vhost.conf /etc/apache2/sites-available/000-default.conf
 
-# Cache de configuración y migraciones (ignora error si ya migrado)
+# Cache de configuración y migraciones
 RUN php artisan config:cache \
     && php artisan migrate --force || true
 
+# Exponer el puerto
 EXPOSE 80
+
+# Comando por defecto
+CMD ["apache2-foreground"]
